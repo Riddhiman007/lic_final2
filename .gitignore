@@ -1,0 +1,7 @@
+node_modules
+.vercel
+
+# Local Netlify folder
+.netlify
+
+./package-lock.json
