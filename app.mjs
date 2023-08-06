@@ -59,10 +59,11 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `33 15 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `01 17 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
-      const mail = sendMail(email + price);
+      const mail = sendMail(email + stringify(price));
+      console.log(mail);
       mail
         .then(() => {
           console.log("mail sent");
