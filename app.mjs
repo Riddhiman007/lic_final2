@@ -53,7 +53,7 @@ const month = [
 app.post("/api/schedule", (req, res) => {
   const query = req.query;
   const email = query.email;
-  const price = document.getElementById("price");
+  const price = query.price;
   console.log(price);
   const date = new Date(query.date);
   console.log("task scheduled");
