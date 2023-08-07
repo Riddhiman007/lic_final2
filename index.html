@@ -240,12 +240,12 @@
       const email = document.getElementById("email");
       const date = document.getElementById("renewaldate");
       const form = document.getElementById("form");
-      const price = document.getElementById("price")
+      const price = document.getElementById("price");
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
         const query = fetch(
           // `https://musical-bombolone-9c154f.netlify.app/`,
-          `/api/schedule?email=${email.value}&date=${date.value}`,
+          `/api/schedule?email=${email.value}&date=${date.value}&price=${price.value}`,
           {
             method: "POST",
           }
