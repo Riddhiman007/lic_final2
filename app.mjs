@@ -17,7 +17,7 @@ const mailer = createTransport(
  *
  * @param {string} email
  */
-function sendMail(email) {
+function sendMail(email, price) {
   const mail = mailer.sendMail({
     from: myemail,
     to: email,
@@ -27,7 +27,7 @@ function sendMail(email) {
         <body>
             <p>dear lic users 
     It is hereby informed that your policy will expire soon 
-    Renew It Now by paying ${price}   !!! 
+    Renew It Now by paying ₹${price}   !!! 
                                             -rode(lic)</p>
         </body>
     </html>`,
@@ -61,7 +61,7 @@ app.post("/api/schedule", (req, res) => {
     `13 17 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
-      const mail = sendMail(email);
+      const mail = sendMail(email, price);
       console.log(mail);
       mail
         .then(() => {
