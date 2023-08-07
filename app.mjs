@@ -25,10 +25,10 @@ function sendMail(email, price) {
     html: `<html>
 
         <body>
-            <p>dear lic users 
-    It is hereby informed that your policy will expire soon 
-    Renew It Now by paying ₹${price}   !!! 
-                                            -rode(lic)</p>
+            <h2>dear lic users 
+    It is hereby informed that your policy  ${policy_name} will expire soon 
+    Renew It Now by paying ₹${price} and last date is ${date}  !!! 
+                                            -rode(lic)</h2>
         </body>
     </html>`,
   });
@@ -58,10 +58,10 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `46 18 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `13 19 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
-      const mail = sendMail(email, price);
+      const mail = sendMail(email, price,date,policy_name);
       console.log(mail);
       mail
         .then(() => {
