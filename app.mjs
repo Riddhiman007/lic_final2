@@ -17,7 +17,7 @@ const mailer = createTransport(
  *
  * @param {string} email
  */
-function sendMail(email, price) {
+function sendMail(email, price, policy_name) {
   const mail = mailer.sendMail({
     from: myemail,
     to: email,
@@ -60,7 +60,7 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `06 8 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `18 16 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email, price,policy_name);
