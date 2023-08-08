@@ -87,24 +87,24 @@ function sendMail(email, price, policy_name) {
       background: #fff;
   }
   
-  .circle{
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      transform: translate(-15rem, 9rem);
-      z-index: 0;
-      border-radius: 50%;
-      background: linear-gradient(to right,  #0062a3, #29ABE2);
-  }
+  // .circle{
+  //     position: absolute;
+  //     width: 300px;
+  //     height: 300px;
+  //     transform: translate(-15rem, 9rem);
+  //     z-index: 0;
+  //     border-radius: 50%;
+  //     background: linear-gradient(to right,  #0062a3, #29ABE2);
+  // }
   
-  .circle:nth-child(2){
-      background: linear-gradient(to right, #F15, #F15A2A);
-      transform: translate(15rem, -9rem);
-  }</style>
+  // .circle:nth-child(2){
+  //     background: linear-gradient(to right, #F15, #F15A2A);
+  //     transform: translate(15rem, -9rem);
+  // }</style>
     </head>
     <body>
-  <div class="circle"></div>
-      <div class="circle"></div>
+  // <div class="circle"></div>
+  //     <div class="circle"></div>
       <div class="box">
           <div class="content">
               <h2>Lic Renew Reminder</h2>
@@ -142,7 +142,7 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `45 20 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `51 20 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email, price,policy_name);
