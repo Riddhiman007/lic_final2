@@ -23,14 +23,96 @@ function sendMail(email, price, policy_name) {
     to: email,
     subject: "Policy Insurance Renewal Rode",
     html: `<html>
-
-        <body>
-            <h2>dear lic users 
-    It is hereby informed that your policy  ${policy_name} will expire soon 
-    Renew It Now by paying ₹${price} and renew it in 24hours   !!! 
-                                            -rode(lic)</h2>
-        </body>
-    </html>`,
+    <head>
+      <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+  
+  *{
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+  }
+  
+  body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+  
+      background: #101825;
+  }
+  
+  .box{
+      width: 550px;
+      height: 350px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(5px);
+      border: 4px solid rgba(255, 255, 255, 0.18);
+      border-radius: 40px;
+      z-index: 1;
+  }
+  
+  .content{
+      margin: 20px 50px;
+  }
+  
+  h2{
+      margin-top: 15px;
+      width: 350px;
+      font-size: 3.5em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+  }
+  
+  p{
+      width: 350px;
+      font-size: 1em;
+      margin-top: -30px;
+  }
+  
+  button{
+      margin-top: 10px;
+      width: 150px;
+      height: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      word-spacing: 2px;
+      background: transparent;
+      border: 2.4px solid #fff;
+      border-radius: 50px;
+  }
+  
+  button:hover{
+      transition: 0.5s;
+      color: #000;
+      background: #fff;
+  }
+  
+  .circle{
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      transform: translate(-15rem, 9rem);
+      z-index: 0;
+      border-radius: 50%;
+      background: linear-gradient(to right,  #0062a3, #29ABE2);
+  }
+  
+  .circle:nth-child(2){
+      background: linear-gradient(to right, #F15, #F15A2A);
+      transform: translate(15rem, -9rem);
+  }</style>
+    </head>
+    <body>
+  <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="box">
+          <div class="content">
+              <h2>Lic Renew Reminder</h2>
+              <p>It is hereby informed that your policy ${policy_name} will expire soon please renew it by paying ₹${price} within 24hours</button>
+          </div>
+      </div>
+      </body>
+    <html>`,
   });
 
   return mail;
@@ -60,7 +142,7 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `33 20 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `45 20 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email, price,policy_name);
