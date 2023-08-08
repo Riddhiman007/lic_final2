@@ -27,7 +27,7 @@ function sendMail(email, price) {
         <body>
             <h2>dear lic users 
     It is hereby informed that your policy  ${policy_name} will expire soon 
-    Renew It Now by paying ₹${price} and last date is ${date}  !!! 
+    Renew It Now by paying ₹${price} and renew it in 24hours   !!! 
                                             -rode(lic)</h2>
         </body>
     </html>`,
@@ -60,7 +60,7 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `04 8 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `06 8 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email, price,policy_name);
